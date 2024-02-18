@@ -9773,9 +9773,10 @@ Email verified! You can close this tab or hit the back button.
     } else if (zid) {
       reportsPromise = isModerator(zid, uid).then(
         (doesOwnConversation: any) => {
-          if (!doesOwnConversation) {
-            throw "polis_err_permissions";
-          }
+          // for prototype, allow anyone to see reports
+          // if (!doesOwnConversation) {
+          //   throw "polis_err_permissions";
+          // }
           return pgQueryP("select * from reports where zid = ($1);", [zid]);
         }
       );
